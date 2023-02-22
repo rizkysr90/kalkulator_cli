@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
+
+	Op "github.com/rizkysr90/kalkulator_cli/helper"
 )
 
-func inputNumber() []int {
-	var arr []int
+func inputNumber() []float32 {
+	var arr []float32
 	y := "y"
 	ans := true
 	index := 0
-	var currentValue int
+	var currentValue float32
 
 	for ans {
 		fmt.Print("Masukkan angka ke ", index+1, " : ")
@@ -32,34 +34,6 @@ func inputNumber() []int {
 	return arr
 }
 
-func sumCalc(arr []int) int {
-	total := 0
-	for i := 0; i < len(arr); i++ {
-		total += arr[i]
-	}
-	return total
-}
-func multiply(arr []int) int {
-	total := arr[0]
-	for i := 1; i < len(arr); i++ {
-		total *= arr[i]
-	}
-	return total
-}
-func divide(arr []int) int {
-	total := arr[0]
-	for i := 1; i < len(arr); i++ {
-		total /= arr[i]
-	}
-	return total
-}
-func subtract(arr []int) int {
-	total := arr[0]
-	for i := 1; i < len(arr); i++ {
-		total -= arr[i]
-	}
-	return total
-}
 func main() {
 	var choosenMenu int8
 	fmt.Println("Kalkulator V.0.1")
@@ -74,16 +48,16 @@ func main() {
 
 	if choosenMenu == 1 {
 		getNumbers := inputNumber()
-		fmt.Println("Hasil Penjumlahan :", sumCalc(getNumbers))
+		fmt.Println("Hasil Penjumlahan :", Op.SumCalc(getNumbers))
 	} else if choosenMenu == 2 {
 		getNumbers := inputNumber()
-		fmt.Println("Hasil Penjumlahan :", subtract(getNumbers))
+		fmt.Println("Hasil Penjumlahan :", Op.Subtract(getNumbers))
 	} else if choosenMenu == 3 {
 		getNumbers := inputNumber()
-		fmt.Println("Hasil Pembagian :", divide(getNumbers))
+		fmt.Println("Hasil Pembagian :", Op.Divide(getNumbers))
 	} else if choosenMenu == 4 {
 		getNumbers := inputNumber()
-		fmt.Println("Hasil Pembagian :", multiply(getNumbers))
+		fmt.Println("Hasil Pembagian :", Op.Multiply(getNumbers))
 	} else {
 		fmt.Println("END")
 	}
